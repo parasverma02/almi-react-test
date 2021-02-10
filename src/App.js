@@ -1,16 +1,14 @@
 import './App.css';
-import GladiatorService from "./services/gladiatorService.js";
+import GladiatorList from "./components/GaldiatorList/GladiatorList.js";
 
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-
-      </header>
+        <GladiatorList />
     </div>
   );
 }
 
-export default App;
+export default App; 

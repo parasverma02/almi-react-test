@@ -1,0 +1,63 @@
+.Gladiator {
+    width: 95%;
+    min-height: 150px;
+    background-color: rgb(202, 202, 202);
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(138, 138, 138, 0.884), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Details {
+    margin: 5px;
+    display: flex;
+    flex-flow: column ;
+}
+.Details p {
+    color: rgb(70, 70, 70);
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+.Details span {
+    color:rgb(0, 0, 0)
+}
+
+.Name {
+    margin: 5px;
+    border-bottom: solid 1px rgb(167, 167, 167);
+}
+
+.Name h1 {
+    font-size: 40px;
+    margin: auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .Gladiator {
+        padding: 0;
+        min-height: 100px;
+        max-height: 130px;
+        display: flex;
+
+    }
+    .Name {
+        width: 40%;
+        max-width: 50%;
+        border-bottom: none;
+        border-right: solid 1px rgb(167, 167, 167);
+        display: flex;
+    }
+    .Name h1 {
+        font-size: 25px;
+    }
+    .Details {
+        width: 60%;
+        min-width: 50%;
+        margin: auto 5px;
+    }
+    .Details p, span {
+        font-size: 12px;
+    }
+}
