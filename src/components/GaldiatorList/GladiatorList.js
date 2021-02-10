@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import csvFile from '../../assets/gladiators.csv'
 import Papa from 'papaparse';
 import classes from './GladiatorList.module.css';
 import Gladiator from './Gladiator/Gladiator';
-class gladiatorList extends Component {
+const GladiatorList = (props) => {
 
-    state = {
-        gladiators: []
-    };
+    const [gladiators, setGladiators] = useState([]);
 
-    componentDidMount = () => {
+    useEffect(() => {
         Papa.parse(csvFile, {
             download: true,
             header: true,
-            complete: this.saveToState
+            complete: saveToState
         });
-    };
-    saveToState = (input) => {
-        
+    }, []);
+
+    const saveToState = (input) => {
+
         const galdiatorList = input.data.map((element) => {
             //Removing spaces from keys of the objects
             Object.keys(element).forEach((key) => {
@@ -26,31 +25,24 @@ class gladiatorList extends Component {
             })
             return element;
         })
-        this.setState({gladiators: galdiatorList});
+        setGladiators(galdiatorList);
     };
 
-
-
-    render() {
-       
-        const galdiatorList = this.state.gladiators.map((gladiator, index) => <Gladiator key={index} { ... gladiator} />);
-        return (
-            <div className={classes.Container}>
-                <div className={classes.Heading}>
-                    <h1>Gladiators List</h1>
-                </div>
-                <div className={classes.GladiatorContentContainer}>
-                    <div className={classes.GladiatorContentBody}>
-                        {galdiatorList}
-                    </div>
-                </div>
-
+    const galdiatorList = gladiators.map((gladiator, index) => <Gladiator key={index} {...gladiator} />);
+    return (
+        <div className={classes.Container}>
+            <div className={classes.Heading}>
+                <h1>Gladiators List</h1>
             </div>
-        )
-    }
+            <div className={classes.GladiatorContentContainer}>
+                <div className={classes.GladiatorContentBody}>
+                    {galdiatorList}
+                </div>
+            </div>
 
+        </div>
+    );
 };
 
-
-export default gladiatorList;
+export default GladiatorList;
 
